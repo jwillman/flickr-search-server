@@ -21,6 +21,8 @@ module.exports = async function (context, req) {
         },
         headers: {
             "Content-Type": "application/json",
+            "Access-Control-Allow-Origin":
+                "http://flickr-search.azurewebsites.net/",
         },
     };
 };
