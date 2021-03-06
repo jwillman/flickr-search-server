@@ -34,7 +34,7 @@ module.exports = async function (context, req) {
     } catch (error) {
         context.res = {
             body: {
-                error: [error.response],
+                error: [error],
             },
         };
     }
