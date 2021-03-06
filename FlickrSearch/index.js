@@ -12,7 +12,11 @@ module.exports = async function (context, req) {
 
     const url = `http://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${process.env.FLICKR_API_KEY}&text=${searchstring}&format=json&nojsoncallback=1`;
 
+    console.log(url);
+
     const response = await axios.get(url);
+
+    console.log(response);
 
     let server_id = response.data.photos.photo[1].server;
     let id = response.data.photos.photo[1].id;
