@@ -12,30 +12,22 @@ module.exports = async function (context, req) {
 
     const url = `http://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${process.env.FLICKR_API_KEY}&text=${searchstring}&format=json&nojsoncallback=1`;
 
-    try {
-        const response = await axios.get(url);
+    const response = await axios.get(url);
 
-        let server_id = response.data.photos.photo[1].server;
-        let id = response.data.photos.photo[1].id;
-        let secret = response.data.photos.photo[1].secret;
+    let server_id = response.data.photos.photo[1].server;
+    let id = response.data.photos.photo[1].id;
+    let secret = response.data.photos.photo[1].secret;
 
-        // https://live.staticflickr.com/{server-id}/{id}_{secret}.jpg
+    // https://live.staticflickr.com/{server-id}/{id}_{secret}.jpg
 
-        context.res = {
-            body: {
-                photoUrls: [
-                    `https://live.staticflickr.com/${server_id}/${id}_${secret}.jpg`,
-                ],
-            },
-            headers: {
-                "Content-Type": "application/json",
-            },
-        };
-    } catch (error) {
-        context.res = {
-            body: {
-                error: [error],
-            },
-        };
-    }
+    context.res = {
+        body: {
+            photoUrls: [
+                `https://live.staticflickr.com/${server_id}/${id}_${secret}.jpg`,
+            ],
+        },
+        headers: {
+            "Content-Type": "application/json",
+        },
+    };
 };
