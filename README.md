@@ -6,3 +6,7 @@
 3. nvm use
 4. Set environment variable FLICKR_API_KEY
 5. Debug with F5
+
+# TODO
+
+1. Cache results
